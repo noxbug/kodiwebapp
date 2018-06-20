@@ -1,7 +1,7 @@
-{% extends "base.html" %}
+{% extends 'kodiwebapp/base.html' %}
 
 {% block menu %}
-<button class="button"><a href="{{url_for('index')}}"><i class="material-icons">clear</i></a></button>
+<button class="button"><a href="{% url 'kodiwebapp:index' %}"><i class="material-icons">clear</i></a></button>
 {% endblock %}
 
 
@@ -11,27 +11,27 @@
 <div id="remote">
     <div>
         <p></p>
-        <button class="button"><a href="{{url_for('up')}}"><i class="material-icons">keyboard_arrow_up</i></a></button>
+        <button class="button"><a href="{% url 'kodiwebapp:up' %}"><i class="material-icons">keyboard_arrow_up</i></a></button>
         <p></p>
     </div>
     <div>
-        <button class="button"><a href="{{url_for('left')}}"><i class="material-icons">keyboard_arrow_left</i></a></button>
-        <button class="button"><a href="{{url_for('select')}}"><i class="material-icons">crop_square</i></a></button>
-        <button class="button"><a href="{{url_for('right')}}"><i class="material-icons">keyboard_arrow_right</i></a></button>
+        <button class="button"><a href="{% url 'kodiwebapp:left' %}"><i class="material-icons">keyboard_arrow_left</i></a></button>
+        <button class="button"><a href="{% url 'kodiwebapp:select' %}"><i class="material-icons">crop_square</i></a></button>
+        <button class="button"><a href="{% url 'kodiwebapp:right' %}"><i class="material-icons">keyboard_arrow_right</i></a></button>
     </div>
     <div>
         <p></p>
-        <button class="button"><a href="{{url_for('down')}}"><i class="material-icons">keyboard_arrow_down</i></a></button>
+        <button class="button"><a href="{% url 'kodiwebapp:down' %}"><i class="material-icons">keyboard_arrow_down</i></a></button>
         <p></p>
     </div>
 </div>
 
 
 <div id="bottom-bar">
-    <button class="button"><a href="{{url_for('back')}}"><i class="material-icons">arrow_back</i></a></button>
-    <button class="button"><a href="{{url_for('home')}}"><i class="material-icons">home</i></a></button>
-    <button class="button"><a href="{{url_for('context_menu')}}"><i class="material-icons">comment</i></a></button>
-    <button class="button"><a href="{{url_for('info')}}"><i class="material-icons">info_outline</i></a></button>
+    <button class="button"><a href="{% url 'kodiwebapp:back' %}"><i class="material-icons">arrow_back</i></a></button>
+    <button class="button"><a href="{% url 'kodiwebapp:home' %}"><i class="material-icons">home</i></a></button>
+    <button class="button"><a href="{% url 'kodiwebapp:context_menu' %}"><i class="material-icons">comment</i></a></button>
+    <button class="button"><a href="{% url 'kodiwebapp:info' %}"><i class="material-icons">info_outline</i></a></button>
 </div>
 
 {% endblock %}

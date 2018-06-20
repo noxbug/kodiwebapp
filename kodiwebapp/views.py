@@ -51,5 +51,50 @@ def fast_rewind(request):
 
 ### CONTROL ###
 def control(request):
-    return HttpResponse('control page!')
+    context = {'kodi': kodi}
+    return render(request, 'kodiwebapp/control.html', context)
 
+
+def up(request):
+    kodi.input.up()
+    return redirect('kodiwebapp:control')
+
+
+def down(request):
+    kodi.input.down()
+    return redirect('kodiwebapp:control')
+
+
+def left(request):
+    kodi.input.left()
+    return redirect('kodiwebapp:control')
+
+
+def right(request):
+    kodi.input.right()
+    return redirect('kodiwebapp:control')
+
+
+def select(request):
+    kodi.input.select()
+    return redirect('kodiwebapp:control')
+
+
+def back(request):
+    kodi.input.back()
+    return redirect('kodiwebapp:control')
+
+
+def home(request):
+    kodi.input.home()
+    return redirect('kodiwebapp:control')
+
+
+def context_menu(request):
+    kodi.input.context_menu()
+    return redirect('kodiwebapp:control')
+
+
+def info(request):
+    kodi.input.info()
+    return redirect('kodiwebapp:control')

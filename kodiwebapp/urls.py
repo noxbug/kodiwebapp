@@ -5,6 +5,7 @@ from . import views
 app_name = 'kodiwebapp'
 
 urlpatterns = [
+    ### INDEX ###
     path('', views.index, name='index'),
     ### MENU ###
     path('translate_sub', views.translate_sub, name='translate_sub'),
@@ -17,4 +18,13 @@ urlpatterns = [
     path('fast_rewind/', views.fast_rewind, name='fast_rewind'),
     ### CONTROL ###
     path('control/', views.control, name='control'),
+    path('up/', views.up, name='up'),
+    path('down/', views.down, name='down'),
+    path('left/', views.left, name='left'),
+    path('right/', views.right, name='right'),
+    path('select/', views.select, name='select'),
+    path('back/', views.back, name='back'),
+    path('home/', views.home, name='home'),
+    path('context_menu/', views.context_menu, name='context_menu'),
+    path('info/', views.info, name='info'),
 ]
