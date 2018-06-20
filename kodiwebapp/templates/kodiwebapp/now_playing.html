@@ -1,0 +1,46 @@
+{% extends 'kodiwebapp/base.html' %}
+
+{% block menu %}
+<button class="button"><a href="{% url 'kodiwebapp:control' %}"><i class="material-icons">apps</i></a></button>
+{% endblock %}
+
+
+{% block content %}
+
+{% if kodi.nowplaying.active == True %}
+<div id="album-art">
+    <a href="{% url 'kodiwebapp:index' %}"><img src="{{kodi.nowplaying.albumart}}" alt=""></a>
+</div>
+{% endif %}
+
+
+<div id="now-playing">
+    <h1>{{kodi.nowplaying.title}}</h1>
+    <h2>{{kodi.nowplaying.artist}}</h2>
+</div>
+
+<div id="progress-bar">
+    <div id="progress-indicator"></div>
+    <style>#progress-indicator {width: {{kodi.nowplaying.position}}%;}</style>
+</div>
+
+
+<div id="player-controls">
+    <button class="button"><a href="{% url 'kodiwebapp:fast_rewind' %}"><i class="material-icons">fast_rewind</i></a></button>
+    <button class="button"><a href="{% url 'kodiwebapp:play' %}">
+        {% if kodi.nowplaying.play == True %}
+        <i class="material-icons">pause</i>
+        {% else %}
+        <i class="material-icons">play_arrow</i>
+            {% if kodi.nowplaying.position > 0 %}
+            <style>#progress-bar {visibility: visible;}</style>
+            {% endif %}
+        {% endif %}
+    </a></button>
+    <button class="button"><a href="{% url 'kodiwebapp:stop' %}"><i class="material-icons">stop</i></a></button>
+    <button class="button"><a href="{% url 'kodiwebapp:fast_forward' %}"><i class="material-icons">fast_forward</i></a></button>
+</div>
+
+<style>#mini-player {display: none;}</style>
+
+{% endblock %}

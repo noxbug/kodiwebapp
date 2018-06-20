@@ -1,9 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>kodi web app</title>
+
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet" type="text/css">
+
+    <link href="{% static 'kodiwebapp/style.css' %}" rel="stylesheet" type="text/css">
     <link rel="manifest" href="/static/manifest.json">
     <style>#background {background-image: url("{{kodi.nowplaying.albumart}}");}</style>
 </head>
@@ -20,9 +23,9 @@
         <div class="dropdown">
             <button class="button"><i class="material-icons">more_vert</i></button>
             <div class="dropdown-content">
-                <a href="{{url_for('translate_sub')}}">Translate subtitle</a>
-                <a href="{{url_for('next_sub')}}">Next subtitle</a>
-                <a href="{{url_for('update')}}">Update library</a>
+                <a href="{% url 'kodiwebapp:translate_sub' %}">Translate subtitle</a>
+                <a href="{% url 'kodiwebapp:next_sub' %}">Next subtitle</a>
+                <a href="{% url 'kodiwebapp:update' %}">Update library</a>
             </div>
         </div>
     </div>
@@ -41,7 +44,7 @@
             <h2>{{kodi.nowplaying.artist}}</h2>
         </div>
         <div id="mini-player-controls">
-            <button class="button"><a href="{{url_for('play')}}">
+            <button class="button"><a href="{% url 'kodiwebapp:play' %}">
             {% if kodi.nowplaying.play == True %}
                 <i class="material-icons">pause</i>
             {% else %}
@@ -51,7 +54,6 @@
         </div>
     </div>
     {% endif %}
-
 
 </div>
 </div>
