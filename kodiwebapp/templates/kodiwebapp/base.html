@@ -3,12 +3,12 @@
 <html>
 <head>
     <title>kodi web app</title>
-
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
-
     <link href="{% static 'kodiwebapp/style.css' %}" rel="stylesheet" type="text/css">
-    <link rel="manifest" href="/static/manifest.json">
+    <link href="{% static 'kodiwebapp/manifest.json' %}" rel="manifest">
     <style>#background {background-image: url("{{kodi.nowplaying.albumart}}");}</style>
+    {% block head %}
+    {% endblock %}
 </head>
 
 <body>

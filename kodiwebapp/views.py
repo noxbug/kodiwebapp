@@ -110,3 +110,16 @@ def context_menu(request):
 def info(request):
     kodi.input.info()
     return redirect('kodiwebapp:control')
+
+
+### PLAYLIST ###
+def playlist(request):
+    items = kodi.playlist.get_items()['items']
+    context = {'kodi': kodi, 'playlist': items}
+    return render(request, 'kodiwebapp/playlist.html', context)
+
+
+def playlist_select(request, position):
+    kodi.player.g
+    return HttpResponse(position)
+

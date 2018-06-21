@@ -1,0 +1,18 @@
+{% extends 'kodiwebapp/base.html' %}
+
+{% block menu %}
+<button class="button"><a href="{% url 'kodiwebapp:index' %}"><i class="material-icons">clear</i></a></button>
+{% endblock %}
+
+
+{% block content %}
+<ul>
+{% for item in playlist %}
+    <li>
+        <a href="{% url 'kodiwebapp:playlist_select' forloop.counter0 %}">
+        <p>{{ item.label }}</p>
+        </a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -27,4 +27,7 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('context_menu/', views.context_menu, name='context_menu'),
     path('info/', views.info, name='info'),
+    ### PLAYLIST ###
+    path('playlist/', views.playlist, name='playlist'),
+    path('playlist/<int:position>', views.playlist_select, name='playlist_select'),
 ]
