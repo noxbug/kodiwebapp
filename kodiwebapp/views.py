@@ -1,13 +1,16 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
+from lib.subtitle.subtitle import Subtitle
+from time import sleep
+
 import lib.kodirpc as kodi
+
 
 # Connect to kodi
 kodi.connection.connect('192.168.1.10')
 
 # Create your views here.
-
 
 def index(request):
     kodi.nowplaying.update()
@@ -17,15 +20,24 @@ def index(request):
 
 ### MENU ###
 def translate_sub(request):
-    return HttpResponse('translate sub page')
+    subtitle = Subtitle
+    item = kodi.player.get_item()
+    subtitle.translate(item['file'])
+    # wait for kodi to discover the new file
+    sleep(3)
+    # jump to next subtitle file
+    kodi.player.next_subtitle()
+    return redirect('kodiwebapp:index')
 
 
 def next_sub(request):
-    return HttpResponse('next sub page')
+    kodi.player.next_subtitle()
+    return redirect('kodiwebapp:index')
 
 
 def update(request):
-    return HttpResponse('update library page')
+    kodi.library.update()
+    return redirect('kodiwebapp:index')
 
 
 ### PLAYER ###
