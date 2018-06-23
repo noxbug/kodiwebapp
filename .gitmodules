@@ -1,3 +1,6 @@
 [submodule "lib/subtitle"]
 	path = lib/subtitle
 	url = https://github.com/noxbug/subtitle
+[submodule "lib/kodirpc"]
+	path = lib/kodirpc
+	url = https://github.com/noxbug/kodirpc

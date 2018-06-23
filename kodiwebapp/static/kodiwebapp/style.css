@@ -1,295 +1,106 @@
-h1 { font-size: 2em; }
-h2 { font-size: 1.5em; }
-h3 { font-size: 1.17em; }
-h4 { font-size: 1.12em; }
-h5 { font-size: .83em; }
-h6 { font-size: .75em; }
-
-h1, h2, h3, h4, h5, h6, p, i {
-    color: white;
-    text-shadow: 0px 0px 5px rgba(0,0,0,0.3);
-}
-
-body, html {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#container {
-    width: 100%;
-    height: 100vh; /* view height */
-    position: relative;
-    overflow: hidden;
-}
-
-/* BACKGROUND */
-#background, #gradient {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index:-1;
-}
-
-#background {
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachement: fixed;
-    background-size: cover;
-    transform: scale(1.5); /* scale figure to remove border filter artifact */
-    filter: blur(10px);
-}
-
-#gradient {
-    background: radial-gradient(grey, black);
-    opacity: 0.3;
-}
-
-#content {
-    margin: 0 auto;
-    height: 100%;
-    display: flex; /* evenly space child divs */
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/* MENU */
-#menu {
-    width: 100%;
-    padding: 0.5em 0; /* top + bottom margin */
-    margin: 0 auto; /* center */
-    display: flex; /* flex right */
-    //justify-content: flex-end;
-    justify-content: space-between;
-}
-
-/* MINI PLAYER */
-#mini-player {
-    width: 100%;
-    //padding: 0.5em 0; /* top + bottom margin */
-    margin: 0 auto; /* center */
-    display: flex; /* flex right */
-    justify-content: space-between;
-    align-items: stretch;
-    //background: blue;
-}
-
-#mini-now-playing {
-    width: 60%;
-    padding: 0em 0.5em;
-    //margin: 0 auto;
-    //background: red;
-    //display: flex; /* flex right */
-    //align-items: center;
-}
-
-#mini-player-controls {
-    //background: green;
-    display: flex; /* flex right */
-    align-items: center;
-}
-
-#mini-player h1 {
-    font-size: 1.17em;
-}
-
-#mini-player h2 {
-    font-size: 1.0em;
-}
-
-#mini-album-art {
-    width: 15%;
-    //height: 100%;
-    display: flex; /* flex right */
-    align-items: center;
-}
-
-/* BOTTOM BAR */
-#bottom-bar {
-    width: 100%;
-    padding: 0.5em 0; /* top + bottom margin */
-    margin: 0 auto; /* center */
-    display: flex; /* flex right */
-    //justify-content: flex-end;
-    justify-content: space-between;
-}
-
-/* DROP DOWN */
-.dropdown {
-    position: relative; /* needed to correctly align menu */
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0; /* align dropdown menu right side */
-  	left: auto;
-    background-color: #f9f9f9;
-    min-width: 10em;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
-    border-radius: 0.7em;
-    overflow: hidden; /* crop rounded corners when hover */
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 0.9em 1em;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* NOW PLAYING */
-#now-playing {
-    width: 100%;
-    margin 0 auto;
-    text-align: center;
-    color: white;
-    //background-color: red;
-}
-
-/* ALBUM ART */
-#album-art {
-    width: 75%;
-    margin: 0 auto;
-    //background: green;
-}
-
-#album-art img, #mini-album-art img {
-    width: 100%;
-    height: auto;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+/* font size: https://material.io/design/typography/the-type-system.html#type-scale */
+h1 {
+    font-size: 6em;
+    margin: -0.1em 0;
+    font-weight: lighter;
 }
 
 
-/* PROGRESS BAR */
-#progress-bar {
-    width: 75%;
-    margin: 0 auto;
-    overflow: hidden;
-    background: grey;
-    visibility: hidden;
+h2 {
+    font-size: 3.75em;
+    margin: -0.03125em 0;
+    font-weight: lighter;
 }
 
-#progress-indicator {
-    opacity: 1;
-    min-height: 0.2em;
-    background: white;
+
+h3 {
+    font-size: 3em;
+    margin: 0 0;
+    font-weight: normal;
 }
 
-/* REMOTE */
-#remote {
-    width: 15em;
-    height: 15em;
-    margin: 0 auto;
-    //background: red;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+h4 {
+    font-size: 2.125em;
+    margin: 0.015em 0;
+    font-weight: normal;
 }
 
-#remote div {
-    width: 100%;
-    display: flex; /* evenly spread child divs */
-    justify-content: space-between;
+
+h5 {
+    font-size: 1.5em;
+    margin: 0 0;
+    font-weight: normal;
 }
 
-/* PLAYER CONTROLS */
-#player-controls {
-    //width: 55%;
-    width: 70%;
-    padding: 0 0 2em 0; /* top right bottom left */
-    margin: 0 auto; /* center */
-    display: flex; /* evenly spread child divs */
-    justify-content: space-between;
+
+h6 {
+    font-size: 1.125em;
+    margin: 0.01em 0;
+    font-weight: bold;
 }
 
-/* BUTTON */
-.button {
-    border-radius: 50%; /* make circle */
-    text-align: center; /* horizontal-align */
-    vertical-align: middle; /* vertical-align */
-    background-color: transparent;
-    border: none;
-    color: white;
-    padding: 0;
-    display: inline-block;
-    cursor: pointer;
+
+p {
+    font-size: 0.875em;
+    margin: 0.015625em 0;
+    font-weight: normal;
 }
 
-.button:hover {
-    //background: radial-gradient(grey, black);
-    background-color: grey;
-    opacity: 0.3;
+
+.p1 {
+    font-size: 1em;
+    margin: 0.03125em 0;
+    font-weight: normal;
 }
 
-.button i {
-    font-size: 2em; /* increase font size */
-    width: 1.5em;
-    line-height: 1.5em; /* needed for vertical-align */
-    color: white; /* white text color */
+
+.s1 {
+    font-size: 1em;
+    margin: 0.01em 0;
+    font-weight: normal;
 }
 
+
+.s2 {
+    font-size: 0.875em;
+    margin: 0.00625em 0;
+    font-weight: bold;
+}
+
+
+html, body {
+	margin: 0; /* remove white border */
+	padding: 0;
+}
+
+
+body {
+    font-family: "Avenir Next", "Avenir", sans-serif;
+}
+
+
+.container {
+	overflow: hidden; /* hide horizontal scroll bars */
+}
+
+.inner-container {
+	//width: 100%; /* control width based on screen orientation */
+	//float: right; /* use this property to control which element falls off-screen */
+	display: flex;
+	min-height: 100vh; /* stretch full height of screen, but allow scrolling */
+}
 
 /* PORTRAIT */
 @media screen and (orientation:portrait) {
-    #content {
-        width: 90%;
+    .inner-container {
+        width: 150%; /* push navigation off screen */
     }
 }
 
 /* LANDSCAPE */
 @media screen and (orientation:landscape) {
-    #content {
-        width: 50%;
+    .inner-container {
+        width: 100%;
     }
 }
-
-/* FONTS */
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
-  src: local('Material Icons'),
-  local('MaterialIcons-Regular'),
-  url(fonts/MaterialIcons-Regular.woff2) format('woff2'),
-  url(fonts/MaterialIcons-Regular.woff) format('woff'),
-  url(fonts/MaterialIcons-Regular.ttf) format('truetype');
-}
-
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
-
