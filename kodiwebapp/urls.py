@@ -5,6 +5,11 @@ from . import views
 app_name = 'kodiwebapp'
 
 urlpatterns = [
+    ### DEBUG ###
+    path('base/', views.base, name='base'),
+    path('base_nav/', views.base_nav, name='base_nav'),
+    path('base_nav_ui/', views.base_nav_ui, name='base_nav_ui'),
+    path('base_nav_ui_content/', views.base_nav_ui_content, name='base_nav_ui_content'),
     ### INDEX ###
     path('', views.index, name='index'),
     ### MENU ###

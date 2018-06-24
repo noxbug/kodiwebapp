@@ -1,61 +1,69 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>kodi web app</title>
+    <meta charset="UTF-8">
+    <title>Template</title>
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
     <link href="{% static 'kodiwebapp/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'kodiwebapp/style_font.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'kodiwebapp/manifest.json' %}" rel="manifest">
-    <style>#background {background-image: url("{{kodi.nowplaying.albumart}}");}</style>
     {% block head %}
     {% endblock %}
 </head>
-
 <body>
-<div id="container">
-<div id="background"></div>
-<div id="gradient"></div>
-
-<div id="content">
-    <div id="menu">
-        {% block menu %}
-        {% endblock %}
-        <div class="dropdown">
-            <button class="button"><i class="material-icons">more_vert</i></button>
-            <div class="dropdown-content">
-                <a href="{% url 'kodiwebapp:translate_sub' %}">Translate subtitle</a>
-                <a href="{% url 'kodiwebapp:next_sub' %}">Next subtitle</a>
-                <a href="{% url 'kodiwebapp:update' %}">Update library</a>
-            </div>
+<div class="container">
+    <div class="navigation-drawer">
+        <div class="branding">
+            <h6>{{ widgets.app.branding }}</h6>
         </div>
+        {% for item in widgets.navigation_drawer %}
+            <a href="#">
+                <span class="list-item">
+                    <p class="s1">{{ item.label }}</p>
+                </span>
+            </a>
+        {% endfor %}
     </div>
-
-
-    {% block content %}
-    {% endblock %}
-
-    {% if kodi.nowplaying.active == True %}
-    <div id="mini-player">
-        <div id="mini-album-art">
-            <img src="{{kodi.nowplaying.albumart}}" alt="">
-        </div>
-        <div id="mini-now-playing">
-            <h1>{{kodi.nowplaying.title}}</h1>
-            <h2>{{kodi.nowplaying.artist}}</h2>
-        </div>
-        <div id="mini-player-controls">
-            <button class="button"><a href="{% url 'kodiwebapp:play' %}">
-            {% if kodi.nowplaying.play == True %}
-                <i class="material-icons">pause</i>
-            {% else %}
-                <i class="material-icons">play_arrow</i>
+    <div class="page">
+        <div class="app-bar">
+            {% if widgets.navigation_drawer %}
+                <i class="material-icons">menu</i>
             {% endif %}
-            </a></button>
+            <h6>{{ widgets.app.name }}</h6>
+            {% for item in widgets.app_bar_buttons %}
+                {% if item.icon %}
+                    <i class="material-icons" style>{{ item.icon }}</i>
+                {% else %}
+                    <button class="button">{{ item.label }}</button>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="content">
+            <div class="list-view">
+                {% for item in widgets.list_view %}
+                    <a href="#">
+                        <span class="list-item">
+                            {% if item.detail %}
+                                <p class="s2">{{ item.label|truncatechars:50 }}</p>
+                                <p class="p2">{{ item.detail|truncatechars:50 }}</p>
+                            {% else %}
+                                <p class="s1">{{ item.label|truncatechars:50 }}</p>
+                            {% endif %}
+                        </span>
+                    </a>
+                {% endfor %}
+            </div>
+            {% block content %}
+            <!--
+            Inject code here or inflate one of the default widgets with  data. Custom CSS can be piggybacked in header.
+            -->
+            {% endblock%}
         </div>
     </div>
-    {% endif %}
-
-</div>
+    {% block container %}
+    {% endblock %}
 </div>
 </body>
 </html>

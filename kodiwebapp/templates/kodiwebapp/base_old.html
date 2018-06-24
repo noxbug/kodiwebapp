@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>kodi web app</title>
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <link href="{% static 'kodiwebapp/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'kodiwebapp/manifest.json' %}" rel="manifest">
+    <style>#background {background-image: url("{{kodi.nowplaying.albumart}}");}</style>
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+<div id="container">
+<div id="background"></div>
+<div id="gradient"></div>
+
+<div id="content">
+    <div id="menu">
+        {% block menu %}
+        {% endblock %}
+        <div class="dropdown">
+            <button class="button"><i class="material-icons">more_vert</i></button>
+            <div class="dropdown-content">
+                <a href="{% url 'kodiwebapp:translate_sub' %}">Translate subtitle</a>
+                <a href="{% url 'kodiwebapp:next_sub' %}">Next subtitle</a>
+                <a href="{% url 'kodiwebapp:update' %}">Update library</a>
+            </div>
+        </div>
+    </div>
+
+
+    {% block content %}
+    {% endblock %}
+
+    {% if kodi.nowplaying.active == True %}
+    <div id="mini-player">
+        <div class="mini-album-art">
+            <img src="{{kodi.nowplaying.albumart}}" alt="">
+        </div>
+        <div id="mini-now-playing">
+            <h1>{{kodi.nowplaying.title}}</h1>
+            <h2>{{kodi.nowplaying.artist}}</h2>
+        </div>
+        <div id="mini-player-controls">
+            <button class="button">
+                <a href="{% url 'kodiwebapp:play' %}">
+                {% if kodi.nowplaying.play == True %}
+                    <i class="material-icons">pause</i>
+                {% else %}
+                    <i class="material-icons">play_arrow</i>
+                {% endif %}
+                </a>
+            </button>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+</div>
+</body>
+</html>

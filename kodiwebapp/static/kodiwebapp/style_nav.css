@@ -1,0 +1,16 @@
+.navigation {
+	display: flex;
+	flex-grow: 1;
+	background: green; /* claim remaining space */
+	border-right: 1px solid grey;
+}
+
+
+.navigation li {
+    line-height: 34px; /* center text */
+    list-style-type: none;
+}
+
+.navigation li:hover {
+     background-color: red;
+}

@@ -1,4 +1,10 @@
 {% extends 'kodiwebapp/base.html' %}
+{% load static %}
+
+
+{% block head %}
+<link href="{% static 'kodiwebapp/style_playlist.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
 
 {% block menu %}
 <button class="button"><a href="{% url 'kodiwebapp:index' %}"><i class="material-icons">clear</i></a></button>
@@ -6,13 +12,21 @@
 
 
 {% block content %}
-<ul>
-{% for item in playlist %}
-    <li>
-        <a href="{% url 'kodiwebapp:playlist_select' forloop.counter0 %}">
-        <p>{{ item.label }}</p>
-        </a>
-    </li>
-{% endfor %}
-</ul>
+<div id="playlist">
+    {% for item in playlist.items %}
+        <div class="playlist-item">
+                <div class="mini-album-art">
+                    <img src="{{kodi.nowplaying.albumart}}" alt="">
+                </div>
+                <div class="playlist-item-title">
+                    <a href="{% url 'kodiwebapp:playlist_select' forloop.counter0 %}">
+                        <p>{{ item.label }}</p>
+                        <p>{{ item.artist.0}}</p>
+                    </a>
+                </div>
+                <div>
+                </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'kodiwebapp/base.html' %}
+
+{% load static %}
+
+
+{% block head %}
+    <link href="{% static 'kodiwebapp/style_nav.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block container %}
+    <div class="navigation">
+        <ul>
+            <li><a href="#"><p>Music</p></a></li>
+            <li><a href="#"><p>Videos</p></a></li>
+            <li><a href="#"><p>TV Shows</p></a></li>
+            <li><a href="#"><p>Settings</p></a></li>
+            {% block navigation %}
+            {% endblock %}
+        </ul>
+    </div>
+
+    {% block ui %}
+    {% endblock %}
+
+{% endblock %}

@@ -1,0 +1,39 @@
+.content-container {
+	width: 66.6667%;
+	background: blue;
+
+}
+
+
+.menu-bar {
+	background: orange;
+	//padding: 0; /* padding need to avoid strange collapsing margins issue */
+	position: fixed; /* stick menu to top of screen when scrolling */
+	top: 0;
+	width: 100%;
+	line-height: 44px; /* center text */
+    border-bottom: 1px solid grey;
+}
+
+.menu-bar a {
+    text-decoration: none;
+}
+
+
+.content {
+    background: white;
+    padding: 0.5em; /* padding need to avoid strange collapsing margins issue */
+    margin: 44px 0; /* prevent overlap with .menu-bar (trail and error) */
+}
+
+
+/* link to: style.css */
+.inner-container {
+	float: right; /* use this property to control which element falls off-screen */
+}
+
+/* link to: style_nav.css */
+.navigation ul {
+    position: fixed; /* prevent navigation from scrolling with content */
+    top: 0;
+}

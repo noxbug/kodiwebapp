@@ -1,0 +1,141 @@
+/* font size: https://material.io/design/typography/the-type-system.html#type-scale */
+h1 {
+    font-size: 96px;
+    margin: -1.5em 0.5em;
+    font-weight: lighter;
+}
+
+
+h2 {
+    font-size: 60px;
+    margin: -0.5em 0.5em;
+    font-weight: lighter;
+}
+
+
+h3 {
+    font-size: 48px;
+    margin: 0 0.5em;
+    font-weight: normal;
+}
+
+
+h4 {
+    font-size: 34px;
+    margin: 0.25em 0.5em;
+    font-weight: normal;
+}
+
+
+h5 {
+    font-size: 24px;
+    margin: 0 0.5em;
+    font-weight: normal;
+}
+
+
+h6 {
+    font-size: 20px;
+    margin: 0.15em 0.5em;
+    font-weight: bold;
+}
+
+
+p {
+    font-size: 16px;
+    margin: 0.5em 0.5em;
+    font-weight: normal;
+}
+
+
+.p2 {
+    font-size: 14px;
+    margin: 0.25em 0.5em;
+    font-weight: normal;
+}
+
+
+.s1 {
+    font-size: 16px;
+    margin: 0.15em 0.5em;
+    font-weight: normal;
+}
+
+
+.s2 {
+    font-size: 14px;
+    margin: 0.1em 0.5em;
+    font-weight: bold;
+}
+
+
+/* button */
+.button {
+    border-radius: 10%; /* make circle */
+    text-align: center; /* horizontal-align */
+    vertical-align: middle; /* vertical-align */
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    color: white;
+    padding: 0 0.5em;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 36px;
+}
+
+
+.button:hover, i.material-icons:hover {
+    //background: radial-gradient(grey, black);
+    background-color: grey;
+    opacity: 0.3;
+}
+
+
+/* icon font */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(fonts/MaterialIcons-Regular.woff2) format('woff2'),
+    url(fonts/MaterialIcons-Regular.woff) format('woff'),
+    url(fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* custom */
+    width: 36px;
+    line-height: 36px;
+    border-radius: 50%; /* make circle */
+    color: white; /* white text color */
+    text-align: center; /* horizontal-align */
+    vertical-align: middle; /* vertical-align */
+    cursor: pointer;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}

@@ -1,0 +1,15 @@
+.content-container {
+	width: 66.6667%;
+	background: blue;
+
+}
+
+.menu-bar {
+	background: yellow;
+	padding: 0.1em; /* padding need to avoid strange collapsing margins issue */
+}
+
+.content {
+    background: red;
+    padding: 0.1em 0.5em; /* padding need to avoid strange collapsing margins issue */
+}
