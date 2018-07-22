@@ -1,6 +1,7 @@
 class Widgets:
     def __init__(self):
         self.app = {}
+        self.view_name = {}
         self.navigation_drawer = []
         self.list_view = []
         self.app_bar = []

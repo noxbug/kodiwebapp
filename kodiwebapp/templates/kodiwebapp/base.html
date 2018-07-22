@@ -15,11 +15,13 @@
 <body>
 <div class="container">
     <div class="navigation-drawer">
+        <!-- APP BRANDING -->
         <div class="branding">
             <h6>{{ widgets.app.branding }}</h6>
         </div>
+        <!-- NAVIGATION DRAWER -->
         {% for item in widgets.navigation_drawer %}
-            <a href="#">
+            <a href="{{ item.url }}">
                 <span class="list-item">
                     <p class="s1">{{ item.label }}</p>
                 </span>
@@ -28,10 +30,17 @@
     </div>
     <div class="page">
         <div class="app-bar">
+            <!-- HAMBURGER MENU -->
             {% if widgets.navigation_drawer %}
                 <i class="material-icons">menu</i>
             {% endif %}
-            <h6>{{ widgets.app.name }}</h6>
+            <!-- TITLE -->
+            {% if widgets.view_name %}
+                <h6>{{ widgets.view_name }}</h6>
+            {% else %}
+                <h6>{{ widgets.app.title }}</h6>
+            {% endif %}
+            <!-- APP BAR BUTTONS -->
             {% for item in widgets.app_bar_buttons %}
                 {% if item.icon %}
                     <i class="material-icons" style>{{ item.icon }}</i>
@@ -39,11 +48,29 @@
                     <button class="button">{{ item.label }}</button>
                 {% endif %}
             {% endfor %}
+            <!-- MENU -->
+            {% if widgets.menu %}
+                <div class="menu">
+                    <i class="material-icons">more_vert</i>
+                    <div class="menu-content" id="shadow">
+                        {% for item in widgets.menu %}
+                            <a href="{{ item.url }}">
+                                <p>{{ item.label }}</p>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
         </div>
         <div class="content">
+            <!-- LIST VIEW -->
             <div class="list-view">
                 {% for item in widgets.list_view %}
-                    <a href="#">
+                    {% if item.url %}
+                        <a href="{{ item.url }}">
+                    {% else %}
+                        <a href="#">
+                    {% endif %}
                         <span class="list-item">
                             {% if item.detail %}
                                 <p class="s2">{{ item.label|truncatechars:50 }}</p>

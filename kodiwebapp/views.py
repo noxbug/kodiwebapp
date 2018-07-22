@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.http import HttpResponse
 from kodiwebapp.lib.subtitle.subtitle import Subtitle
 from kodiwebapp.lib.widgets.widgets import Widgets
@@ -12,17 +13,17 @@ kodi.connection.connect('192.168.1.10')
 
 # Initialize widgets
 widgets = Widgets()
-widgets.app = {'name': 'Now playing', 'branding': 'Kodi web app'}
+widgets.app = {'title': 'Now playing', 'branding': 'Kodi web app'}
 widgets.app_bar_buttons = [
     {'label': 'NEW'},
     {'label': 'EDIT'},
-    {'label': 'menu', 'icon': 'more_vert'},
+    ]
+widgets.menu = [
+    {'label': 'Update library', 'url': 'kodiwebapp:update'},
     ]
 widgets.navigation_drawer = [
-    {'label': 'Music', 'url': '#'},
-    {'label': 'Videos', 'url': '#'},
-    {'label': 'TV Shows', 'url': '#'},
-    {'label': 'Settings', 'url': '#'},
+    {'label': 'Now Playing', 'url': reverse_lazy('kodiwebapp:player')},
+    {'label': 'Playlist', 'url': reverse_lazy('kodiwebapp:playlist')},
     ]
 widgets.list_view = [
     {'label': 'This is the subject of my messige','detail': 'The body of the messige comes here. Beware that it can be verry long but the template should handle it fine. At least normally'},
@@ -43,22 +44,41 @@ def base(request):
     return render(request, 'kodiwebapp/base.html', context)
 
 
-def base_nav(request):
-    return render(request, 'kodiwebapp/base_nav.html')
+def player_view(request, playlist_position=None):
+    # clone widgets
+    mywidgets = widgets
+    mywidgets.list_view = []
+    # actions
+    if playlist_position:
+        kodi.player.go_to_playlist_position(playlist_position)
+    else:
+        kodi.nowplaying.update()
+    # return
+    context = {'kodi': kodi, 'widgets': mywidgets}
+    return render(request, 'kodiwebapp/player.html', context)
 
 
-def base_nav_ui(request):
-    return render(request, 'kodiwebapp/base_nav_ui.html')
+def playlist_view(request):
+    # clone widgets
+    mywidgets = widgets
+    # get items
+    playlist = kodi.playlist.get_items()['items']
+    # parse playlist items
+    for i,item in enumerate(playlist):
+        item['detail'] = item['artist'][0] + ' | ' + item['album']
+        item['url'] = reverse_lazy('kodiwebapp:player') + str(i) + '/'
+    mywidgets.list_view = playlist
+    # return
+    context = {'widgets': mywidgets}
+    return render(request, 'kodiwebapp/base.html', context)
 
 
-def base_nav_ui_content(request):
-    return render(request, 'kodiwebapp/base_nav_ui.html')
 
 ### INDEX ###
 def index(request):
     kodi.nowplaying.update()
-    context = {'kodi': kodi}
-    return render(request, 'kodiwebapp/now_playing.html', context)
+    context = {'kodi': kodi, 'widgets': widgets}
+    return render(request, 'kodiwebapp/base.html', context)
 
 
 ### MENU ###

@@ -7,9 +7,9 @@ app_name = 'kodiwebapp'
 urlpatterns = [
     ### DEBUG ###
     path('base/', views.base, name='base'),
-    path('base_nav/', views.base_nav, name='base_nav'),
-    path('base_nav_ui/', views.base_nav_ui, name='base_nav_ui'),
-    path('base_nav_ui_content/', views.base_nav_ui_content, name='base_nav_ui_content'),
+    path('player/', views.player_view, name='player'),
+    path('player/<int:playlist_position>/', views.player_view, name='go_to_playlist_position'),
+    path('playlist/', views.playlist_view, name='playlist'),
     ### INDEX ###
     path('', views.index, name='index'),
     ### MENU ###

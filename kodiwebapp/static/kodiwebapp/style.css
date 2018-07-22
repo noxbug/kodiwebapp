@@ -10,6 +10,12 @@ body {
 }
 
 
+#shadow {
+    //box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+    box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
+}
+
+
 .container {
 	float: right; /* push navigation drawer off screen in portrait mode */
 	display: flex;
@@ -70,9 +76,9 @@ body {
 
 
 .app-bar h6, .branding h6 {
-    display: inline-block; /* prevent line break */
+    display: inline-block;  /* prevent line break */
     vertical-align: middle;
-    flex-grow: 1; /*  push buttons to right */
+    flex-grow: 1;           /*  push buttons to right */
 
 }
 
@@ -83,6 +89,46 @@ body {
     border-color: grey;
     border-style: solid;
     border-width: 0 0 1px 0;
+}
+
+
+.menu {
+    position: relative; /* dropdown content to be placed right below the dropdown button */
+    display: inline-block;
+}
+
+
+.menu-content {
+    display: none;      /* hidden by default */
+    position: absolute; /* positioned relative to the nearest positioned ancestor  */
+    right: 5px;         /* align dropdown menu right side */
+    //top: 47px;        /* show below app bar */
+    top: -5px;          /* sho on top of app bar */
+    min-width: 160px;
+    z-index: 1;         /* show on top */
+    border-radius: 5px; /* rounded corners */
+    overflow: hidden;   /* crop rounded corners when hover */
+    background: white;  /* hide everything below */
+}
+
+
+.menu-content a {
+    color: black;           /* remove link colors */
+    text-decoration: none;  /* remove underline */
+    line-height: 36px;      /* increase line-height for touchability */
+    display: block;         /* make full div clickable */
+    padding: 0.1px 0;       /* fix collapsing border issue */
+}
+
+
+.menu-content a:hover {
+    color: white;
+    background-color: grey;
+}
+
+
+.menu:hover .menu-content {
+    display: block;
 }
 
 

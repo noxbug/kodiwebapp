@@ -1,70 +1,72 @@
 /* font size: https://material.io/design/typography/the-type-system.html#type-scale */
 h1 {
     font-size: 96px;
-    margin: -1.5em 0.5em;
+    //margin: -1.5em 10px;
+    margin: -0.25em 10px;
     font-weight: lighter;
 }
 
 
 h2 {
     font-size: 60px;
-    margin: -0.5em 0.5em;
+    //margin: -0.5em 10px;
+    margin: -0.25em 10px;
     font-weight: lighter;
 }
 
 
 h3 {
     font-size: 48px;
-    margin: 0 0.5em;
+    margin: 0 10px;
     font-weight: normal;
 }
 
 
 h4 {
     font-size: 34px;
-    margin: 0.25em 0.5em;
+    margin: 0.25em 10px;
     font-weight: normal;
 }
 
 
 h5 {
     font-size: 24px;
-    margin: 0 0.5em;
+    margin: 0 10px;
     font-weight: normal;
 }
 
 
 h6 {
     font-size: 20px;
-    margin: 0.15em 0.5em;
+    margin: 0.15em 10px;
     font-weight: bold;
 }
 
 
 p {
     font-size: 16px;
-    margin: 0.5em 0.5em;
+    margin: 0.5em 10px;
     font-weight: normal;
 }
 
 
 .p2 {
     font-size: 14px;
-    margin: 0.25em 0.5em;
+    margin: 0.25em 10px;
     font-weight: normal;
 }
 
 
 .s1 {
     font-size: 16px;
-    margin: 0.15em 0.5em;
+    margin: 0.15em 10px;
     font-weight: normal;
 }
 
 
 .s2 {
     font-size: 14px;
-    margin: 0.1em 0.5em;
+    margin: 0.1em 10px;
     font-weight: bold;
 }
 

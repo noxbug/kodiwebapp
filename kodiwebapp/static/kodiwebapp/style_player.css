@@ -1,0 +1,30 @@
+/* ALBUM ART */
+.album-art {
+    width: 50%;
+    //position: relative;
+    //left: 10px;
+    //top: 10px;
+    margin: 0 auto;       /* center */
+    //background: green;
+}
+
+
+.album-art img, .mini-album-art img {
+    width: 100%;
+}
+
+
+/* PROGRESS BAR */
+.progress-bar {
+    width: 50%;
+    margin: 0 auto;
+    overflow: hidden;
+    background: grey;
+    visibility: hidden;
+}
+
+.progress-indicator {
+    opacity: 1;
+    min-height: 5px;
+    background: red;
+}
