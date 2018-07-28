@@ -10,10 +10,10 @@ import kodiwebapp.lib.kodirpc as kodi
 # Connect to kodi
 kodi.connection.connect('192.168.1.10')
 
-
 # Initialize widgets
 widgets = Widgets()
-widgets.app = {'title': 'Now playing', 'branding': 'Kodi web app'}
+widgets.title = 'Now playing'
+widgets.branding = 'Kodi web app'
 widgets.app_bar_buttons = [
     {'label': 'NEW'},
     {'label': 'EDIT'},
@@ -24,29 +24,23 @@ widgets.menu = [
 widgets.navigation_drawer = [
     {'label': 'Now Playing', 'url': reverse_lazy('kodiwebapp:player')},
     {'label': 'Playlist', 'url': reverse_lazy('kodiwebapp:playlist')},
+    {'label': 'Artists', 'url': reverse_lazy('kodiwebapp:artists')},
+    {'label': 'Albums', 'url': reverse_lazy('kodiwebapp:albums')},
+    {'label': 'Songs', 'url': reverse_lazy('kodiwebapp:songs')},
     ]
-widgets.list_view = [
-    {'label': 'This is the subject of my messige','detail': 'The body of the messige comes here. Beware that it can be verry long but the template should handle it fine. At least normally'},
-    {'label': 'Item 2'},
-    {'label': 'Item 3'},
-    {'label': 'Item 4'},
-    {'label': 'Item 1'},
-    {'label': 'Item 2'},
-    {'label': 'END-1'},
-    {'label': 'END'},
-    ]
+widgets.list_view = []
 
 # Create your views here.
 
-### DEBUG VIEWS ###
 def base(request):
     context = {'widgets': widgets}
     return render(request, 'kodiwebapp/base.html', context)
 
 
 def player_view(request, playlist_position=None):
-    # clone widgets
-    mywidgets = widgets
+    # copy widgets
+    mywidgets = widgets.copy()
+    mywidgets.title = 'Now playing'
     mywidgets.list_view = []
     # actions
     if playlist_position:
@@ -59,10 +53,11 @@ def player_view(request, playlist_position=None):
 
 
 def playlist_view(request):
-    # clone widgets
-    mywidgets = widgets
+    # copy widgets
+    mywidgets = widgets.copy()
+    mywidgets.title = 'Playlist'
     # get items
-    playlist = kodi.playlist.get_items()['items']
+    playlist = kodi.playlist.get_items()
     # parse playlist items
     for i,item in enumerate(playlist):
         item['detail'] = item['artist'][0] + ' | ' + item['album']
@@ -73,6 +68,51 @@ def playlist_view(request):
     return render(request, 'kodiwebapp/base.html', context)
 
 
+def artist_view(request):
+    # copy widgets
+    mywidgets = widgets.copy()
+    mywidgets.title = 'Artists'
+    # get artists
+    artists = kodi.audiolibrary.get_artists()
+    # parse artists
+    for artist in artists:
+        artist['url'] = reverse_lazy('kodiwebapp:albums') + str(artist['artistid']) + '/'
+    mywidgets.list_view = artists
+    # return
+    context = {'widgets': mywidgets}
+    return render(request, 'kodiwebapp/base.html', context)
+
+
+def album_view(request, artist_id=None):
+    # copy widgets
+    mywidgets = widgets.copy()
+    mywidgets.title = 'Albums'
+    # get albums
+    if artist_id:
+        albums = kodi.audiolibrary.get_albums(artistid=artist_id)
+    else:
+        albums = kodi.audiolibrary.get_albums()
+    for album in albums:
+        album['url'] = reverse_lazy('kodiwebapp:songs') + str(album['albumid']) + '/'
+    mywidgets.list_view = albums
+    # return
+    context = {'widgets': mywidgets}
+    return render(request, 'kodiwebapp/base.html', context)
+
+
+def song_view(request, album_id=None):
+    # copy widgets
+    mywidgets = widgets.copy()
+    mywidgets.title = 'Songs'
+    # get albums
+    if album_id:
+        artists = kodi.audiolibrary.get_songs(albumid=album_id)
+    else:
+        artists = kodi.audiolibrary.get_songs()
+    mywidgets.list_view = artists
+    # return
+    context = {'widgets': mywidgets}
+    return render(request, 'kodiwebapp/base.html', context)
 
 ### INDEX ###
 def index(request):

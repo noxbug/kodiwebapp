@@ -10,6 +10,11 @@ urlpatterns = [
     path('player/', views.player_view, name='player'),
     path('player/<int:playlist_position>/', views.player_view, name='go_to_playlist_position'),
     path('playlist/', views.playlist_view, name='playlist'),
+    path('artists/', views.artist_view, name='artists'),
+    path('albums/', views.album_view, name='albums'),
+    path('albums/<int:artist_id>/', views.album_view, name='artist_albums'),
+    path('songs/', views.song_view, name='songs'),
+    path('songs/<int:album_id>/', views.song_view, name='album_songs'),
     ### INDEX ###
     path('', views.index, name='index'),
     ### MENU ###

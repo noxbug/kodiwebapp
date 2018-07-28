@@ -17,7 +17,7 @@
     <div class="navigation-drawer">
         <!-- APP BRANDING -->
         <div class="branding">
-            <h6>{{ widgets.app.branding }}</h6>
+            <h6>{{ widgets.branding }}</h6>
         </div>
         <!-- NAVIGATION DRAWER -->
         {% for item in widgets.navigation_drawer %}
@@ -38,7 +38,7 @@
             {% if widgets.view_name %}
                 <h6>{{ widgets.view_name }}</h6>
             {% else %}
-                <h6>{{ widgets.app.title }}</h6>
+                <h6>{{ widgets.title }}</h6>
             {% endif %}
             <!-- APP BAR BUTTONS -->
             {% for item in widgets.app_bar_buttons %}
@@ -63,6 +63,11 @@
             {% endif %}
         </div>
         <div class="content">
+            {% block content %}
+            <!--
+            Inject code here or inflate one of the default widgets with  data. Custom CSS can be piggybacked in header.
+            -->
+            {% endblock%}
             <!-- LIST VIEW -->
             <div class="list-view">
                 {% for item in widgets.list_view %}
@@ -82,11 +87,6 @@
                     </a>
                 {% endfor %}
             </div>
-            {% block content %}
-            <!--
-            Inject code here or inflate one of the default widgets with  data. Custom CSS can be piggybacked in header.
-            -->
-            {% endblock%}
         </div>
     </div>
     {% block container %}

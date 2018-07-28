@@ -1,0 +1,30 @@
+{% extends 'kodiwebapp/base.html' %}
+
+{% load static %}
+
+
+{% block head %}
+    <link href="{% static 'kodiwebapp/style_player.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block content %}
+    <!-- NOW PLAYING -->
+    <h4>{{kodi.nowplaying.title}}</h4>
+    <h5>{{kodi.nowplaying.artist}}</h5>
+
+    <!-- ALBUM ART -->
+    <div class="album-art">
+        <a href="#"><img src="{{kodi.nowplaying.albumart}}" alt=""></a>
+    </div>
+
+    <!-- PROGRESS INDICATOR -->
+    <div class="progress-bar">
+        <div class="progress-indicator"></div>
+        <style>.progress-indicator {width: {{ kodi.nowplaying.position }}%;}</style>
+        {% if kodi.nowplaying.position > 0 %}
+            <style>.progress-bar {visibility: visible;}</style>
+        {% endif %}
+    </div>
+
+{% endblock%}
